@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -12,6 +13,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     gender = models.CharField(max_length=20, blank=True, null=True)
+
+    objects = UserManager()
 
     # Django stuff for authentication
     USERNAME_FIELD = "username"

@@ -13,13 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from django.urls.conf import include
+from accounts.views import RegisterAPI, LoginAPI
+from knox import views as knox_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('dashboard/', include("dashboard.urls")),
-    path("accounts/", include("accounts.urls")),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path("api/register/", RegisterAPI.as_view(), name="register"),
+    path("api/login/", LoginAPI.as_view(), name="logout"),
+    path("api/logout/", knox_views.LogoutView.as_view(), name="knox_logout"),
+    path("api/logoutall/", knox_views.LogoutAllView.as_view(), name="knox_logoutall"),
+]
