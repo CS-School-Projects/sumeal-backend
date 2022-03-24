@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     'rest_framework',
     "knox",
+    "dashboard",
+    "rest_api",
 ]
 
 AUTH_USER_MODEL = "accounts.User"
@@ -60,8 +62,6 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
         'knox.auth.TokenAuthentication',
     ]
 }
