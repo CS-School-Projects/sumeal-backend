@@ -132,10 +132,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-
-if not DEBUG:
-    STATIC_ROOT = ''
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
+STATIC_ROOT = BASE_DIR / 'static'
 
 
 
