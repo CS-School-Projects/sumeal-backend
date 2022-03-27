@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     'rest_framework',
     "knox",
+    "dashboard",
+    "rest_api",
 ]
 
 AUTH_USER_MODEL = "accounts.User"
@@ -60,8 +62,6 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
         'knox.auth.TokenAuthentication',
     ]
 }
@@ -132,8 +132,12 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+if not DEBUG:
+    STATIC_ROOT = ''
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
+
+
 
 MEDIA_URL = "/assets/"
 MEDIA_ROOT = BASE_DIR / "assets"
