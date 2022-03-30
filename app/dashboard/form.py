@@ -11,6 +11,12 @@ class MealForm(ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(MealForm, self).__init__(*args, **kwargs)
+        # self.fields['title'].empty_label='Select'
+        # self.fields['title'].required=False
+        
+
+    
+
 
     # YOU HAVE TO DO FOR EACH ATTRIBUTE, TO AVOID THAT STRESS, WRITE A FOR LOOP FOR THAT
 

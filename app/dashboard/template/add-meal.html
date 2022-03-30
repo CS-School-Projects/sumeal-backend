@@ -15,40 +15,78 @@
           </div>
           <!-- End Logo -->
 
-          <div class="card mb-3">
-            <div class="card-body">
-              <div class="pt-4 pb-2">
-                <h5 class="card-title text-center pb-0 fs-4">Create a meal</h5>
+          <div class="container">
+            <div>
+              <div class="d-flex justify-content-center py-4">
+                <a
+                  href="index.html"
+                  class="logo d-flex align-items-center w-auto"
+                >
+                  <img src="assets/img/logo.png" alt="" />
+                  <span class="d-none d-lg-block">Sumeal Menu</span>
+                </a>
               </div>
+              <!-- End Logo -->
 
-              <form
-                class="row g-3 needs-validation"
-                novalidate
-                method="POST"
-                enctype="multipart/form-data"
-                action=" "
-              >
-                {% csrf_token %}
-                <!-- Input:Text -->
-                {% for field in meal%}
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Add Meal</h5>
+                    <p class="text-center small">Choose from the category</p>
+                  </div>
 
-                <div class="col-12">
-                  <label for="yourName" class="form-label"
-                    >{{field.label}}</label
-                  >
-                  {{field}}
+                  <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-12">
+                      <label for="yourName" class="form-label"
+                        >Customer Name</label
+                      >
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        id="yourName"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Please, enter your name!
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label"
+                        >Meal type</label
+                      >
+                      <select id="country" name="country">
+                        <option value="australia">Australia</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please enter a valid meal category!
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label"
+                        >Meal Price</label
+                      >
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        id="yourName"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Please enter a valid meal price!
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">
+                        Create Account
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                {% endfor %}
-
-                <div class="col-12">
-                  <input type="submit" value="Create" Account />
-                  <a href="">
-                    <button class="btn btn-primary w-100" type="submit">
-                      Create Account
-                    </button>
-                  </a>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

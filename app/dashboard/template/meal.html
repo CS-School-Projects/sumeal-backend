@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {%load static%} {% block content %}
+{% extends 'base.html' %} {%load static%}
+<!--  -->
+{% block content %}
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -326,7 +328,9 @@
               <td>{{meal.meal_type}}</td>
               <td>{{meal.meal_price}}</td>
               <td>
-                <a href=""> <span class="badge bg-warning">Edit</span></a>
+                <a href="{% url 'dashboard:update-meals' meal.id %}">
+                  <span class="badge bg-warning">Edit</span></a
+                >
                 <a href=""><span class="badge bg-danger">Delete</span></a>
               </td>
             </tr>
