@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+  <!-- form section -->
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Update Categories</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+     <div class="form-group">
+ <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+    {{form.as_p}}      
+      
+    <button type="Update" class="btn btn-lg btn-primary">Update</button>  
+   </form>
+
+</div>
+</section>
+</main>
+  {%endblock%}
