@@ -331,7 +331,11 @@
                 <a href="{% url 'dashboard:update-meals' meal.id %}">
                   <span class="badge bg-warning">Edit</span></a
                 >
-                <a href=""><span class="badge bg-danger">Delete</span></a>
+                <!-- <a href=""><span class="badge bg-danger">Delete</span></a> -->
+                <form action="{% url 'dashboard:delete_meal' %}" method="post" style="display: inline">
+                  {% csrf_token %}
+                  <input type="text" value="{{meal.id}}" name="meal_id" hidden />
+                  <button class="badge bg-danger" type="submit">Delete</button>
               </td>
             </tr>
             {% endfor %}
