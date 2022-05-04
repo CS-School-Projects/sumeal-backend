@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render,redirect
+from django.http import HttpResponseRedirect
 from django.views import View
-from .models import Meals
+from .models import Meals, MealCategory
 from .form import MealForm
 
 # Create your views here.
@@ -24,38 +25,23 @@ class MealsView(View):
 
 
 
-
-# def addMeal(request):
-    
-#     meal = MealForm()
-
-#     if request.method == 'POST':
-#         meal  = MealForm(request.POST,request.FILES)
-#         if meal.is_valid():
-#             meal.save()
-#             return redirect('meals')
-     
-
-
-#     context={'meal':meal}
-#     return render(request, 'add-meal.html', context)
-
 class AddMealView(View):
-    meal = MealForm()
+    # meal = MealForm()
     def get(self, request):
-        context={'meal':self.meal}
+        categories = MealCategory.objects.all()
+        context={'categories':categories}
         return render(request, 'add-meal.html', context)
 
     def post(self, request):
-
-        form = MealForm(request.POST, request.FILES or None)
+        query = request.POST.get('category')
+        form = MealForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully')
-            return redirect('dashboard:add-meals')
+            return redirect('dashboard:meals')
         else:
             messages.error(request, form.errors)
-            return redirect('dashboard:meals')
+            return redirect('dashboard:add-meals')
 
 
 
@@ -63,29 +49,35 @@ class UpdateMealView(View):
     meal = MealForm()
     def get(self, request, pk):
         item = Meals.objects.filter(id=pk).first()
-        context={'meal':self.meal,'item':item}
+        categories = MealCategory.objects.all()
+        context={'item':item, 'categories':categories}
         return render(request, 'add-meal.html', context)
 
     def post(self, request, pk):
-
         item = Meals.objects.filter(id=pk).first()
-        form = MealForm(request.POST, request.FILES, instance=item)
+        form = MealForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully')
-            return redirect('dashboard:add-meals')
+            return redirect('dashboard:meals')
         else:
             messages.error(request, form.errors)
-            return redirect('dashboard:meals')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
      
-def deleteMeal(request, pk):
-    meal = Meals.objects.get(pk=pk)
-    if request.method == 'POST':
-        meal.delete()
-        return redirect('account')   
 
+class DeleteMealView(View):
+    def get(self, request, *args, **kwargs):
+        return redirect('dashboard:meals')
 
+    def post(self, request, *args, **kwargs):
+        meal = Meals.objects.filter(id=request.POST.get('meal_id')).first()
+        if meal:
+            meal.delete()
+            messages.success(request,'Meal Deleted Successfully')
+        else:
+            messages.error(request,'Meal Not Found')
+        return HttpResponseRedirect(request.META.get('HTTP-REFERER'))
 
 
 
