@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
 <html>
+{% load static %}
 
 <head>
     <title>Sumeal</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
 </head>
 
 <body class="homepage is-preload">
@@ -15,14 +16,14 @@
         <section id="header" class="wrapper">
             <!-- Logo -->
             <div id="logo">
-                <h1><a href="index.html">Sumeal</a></h1>
+                <h1><a href="/">Sumeal</a></h1>
                 <p>A restaurant and food delivery app</p>
             </div>
 
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li class="current"><a href="index.html">Home</a></li>
+                    <li class="current"><a href="/">Home</a></li>
 
                     <li><a href="#">About us</a></li>
                     <li><a href="#">Categories</a></li>
@@ -39,7 +40,9 @@
                     So in case you were wondering what this is all about ...
                 </p>
                 <p class="style2">
-                    Sumeal helps consumers to easily place an order when they are stuck in traffic or on the way to pick up the kids. Mobile apps provide the freedom to order from any place at any time without pausing everything and making a call to the restaurant.
+                    Sumeal helps consumers to easily place an order when they are stuck in traffic or on the way to pick
+                    up the kids. Mobile apps provide the freedom to order from any place at any time without pausing
+                    everything and making a call to the restaurant.
                 </p>
                 <!-- <p class="style3">
             Sumeal helps consumers to easily place an order when they are stuck in traffic or
@@ -58,7 +61,7 @@
             <div class="container">
                 <!-- Image -->
                 <a href="#" class="image featured">
-                    <img src="images/pic01.jpg" alt="" />
+                    <img src="{% static 'images/pic01.jpg' %}" alt="background image" />
                 </a>
 
                 <!-- Features -->
@@ -75,7 +78,8 @@
                                         Meat and Fish
                                     </h3>
                                     <p>
-                                        Our meat and fish recipes come from different parts of the country.They range from local to continental dishes to boost your appetite
+                                        Our meat and fish recipes come from different parts of the country.They range
+                                        from local to continental dishes to boost your appetite
                                     </p>
                                 </section>
                             </div>
@@ -85,7 +89,8 @@
                                         BurgerKing
                                     </h3>
                                     <p>
-                                        Enjoy our delicious varieties of burgers such as hamburgers,cheese burgers and crispy chicken among others
+                                        Enjoy our delicious varieties of burgers such as hamburgers,cheese burgers and
+                                        crispy chicken among others
                                     </p>
                                 </section>
                             </div>
@@ -95,7 +100,8 @@
                                         Dessert
                                     </h3>
                                     <p>
-                                        Our desserts vary based on the consumers taste.We have ice cream,milkshake,fruit punch and many more
+                                        Our desserts vary based on the consumers taste.We have ice cream,milkshake,fruit
+                                        punch and many more
                                     </p>
                                 </section>
                             </div>
@@ -105,7 +111,8 @@
                                         Pizza
                                     </h3>
                                     <p>
-                                        Everyone likes pizza.Purchase different types of pizza from us with various toppings and you won't regret it.
+                                        Everyone likes pizza.Purchase different types of pizza from us with various
+                                        toppings and you won't regret it.
                                     </p>
                                 </section>
                             </div>
@@ -126,10 +133,11 @@
                 <div class="row aln-center">
                     <div class="col-4 col-12-medium">
                         <section class="highlight">
-                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
                             <h3><a href="#">Food Deliver</a></h3>
                             <p>
-                                Order any of our foods and we ensure your order arrives safely to you with the help of our tracking system
+                                Order any of our foods and we ensure your order arrives safely to you with the help of
+                                our tracking system
                             </p>
                             <ul class="actions">
                                 <li><a href="#" class="button style1">Learn More</a></li>
@@ -138,10 +146,11 @@
                     </div>
                     <div class="col-4 col-12-medium">
                         <section class="highlight">
-                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="{% static 'images/pic03.jpg' %}" alt="" /></a>
                             <h3><a href="#">Hygiene</a></h3>
                             <p>
-                                Foods are always prepared in hygienic conditions hence the food is always in its best condition
+                                Foods are always prepared in hygienic conditions hence the food is always in its best
+                                condition
                             </p>
                             <ul class="actions">
                                 <li><a href="#" class="button style1">Learn More</a></li>
@@ -150,10 +159,11 @@
                     </div>
                     <div class="col-4 col-12-medium">
                         <section class="highlight">
-                            <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                            <a href="#" class="image featured"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
                             <h3><a href="#">Varieties of dishes</a></h3>
                             <p>
-                                Our dishes are always the best and have many varieties too which also give you the chance to explore our dishes.
+                                Our dishes are always the best and have many varieties too which also give you the
+                                chance to explore our dishes.
                             </p>
                             <ul class="actions">
                                 <li><a href="#" class="button style1">Learn More</a></li>
@@ -187,7 +197,8 @@
                                         <input type="text" name="email" id="contact-email" placeholder="Email" />
                                     </div>
                                     <div class="col-12">
-                                        <textarea name="message" id="contact-message" placeholder=" Give a feedback or send a complain" rows="4"></textarea>
+                                        <textarea name="message" id="contact-message"
+                                            placeholder=" Give a feedback or send a complain" rows="4"></textarea>
                                     </div>
                                     <div class="col-12">
                                         <ul class="actions">
@@ -254,12 +265,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+    <script src="{% static 'assets/js/browser.min.js' %}"></script>
+    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/util.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
 </html>
