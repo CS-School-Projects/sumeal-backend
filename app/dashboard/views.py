@@ -4,14 +4,15 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from .models import Meals, MealCategory
 from .form import MealForm
+# authentication of users is
 
 # Create your views here.
+
 class IndexView(View):
     template_name = 'index.html'
     def get(self, request):
         context = {}
         return render(request, self.template_name, context)
-
 
 
 class MealsView(View):
