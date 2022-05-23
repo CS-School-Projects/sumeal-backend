@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Category
+
 # Register your models here.
+from dashboard.models import Meals,MealCategory
 
-
-admin.site.register(Category)
+admin.site.register(Meals)
+admin.site.register(MealCategory)

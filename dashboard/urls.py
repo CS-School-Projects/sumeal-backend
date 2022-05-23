@@ -1,16 +1,14 @@
 from django.urls import path
 from . import views
-from .views import addcategory,updatecategory
 
 app_name = "dashboard"
 
 urlpatterns = [
     # Routes for locations
-    path('', views.index, name="index"),
+    path('', views.IndexView.as_view(), name='index'),
+    path('meals/', views.MealsView.as_view(), name='meals'),
+    path('add-meals/', views.AddMealView.as_view(), name='add-meals'),
+    path('update-meals/<str:pk>/', views.UpdateMealView.as_view(), name='update-meals'),
 
-    # Route for adding categories
-        # path('addcategory', views.addcategory, name="addcategory"),
-        path('addcategory/', addcategory.as_view(), name="addcategory"),
-        path('updatecategory/', updatecategory.as_view(), name="updatecategory"),
-
+    path('delete-meal/', views.DeleteMealView.as_view(), name='delete_meal'),
 ]
