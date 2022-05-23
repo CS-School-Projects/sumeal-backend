@@ -1,10 +1,20 @@
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, CreateUserSerializer,LoginUserSerializer
+from products.models import Category, Order, Product, Cart
+from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
+from .serializers import (
+    CategorySerializer,
+    ProductSerializer,
+    UserSerializer,
+    CreateUserSerializer,
+    LoginUserSerializer,
+    CartSerializer,
+    OrderSerializer,
+)
 
-
+User = get_user_model()
 
 # Create  API View for register
 class RegisterAPI(generics.GenericAPIView):
@@ -15,36 +25,38 @@ class RegisterAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         token = AuthToken.objects.create(user)
-        return Response({
-            "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": token[1]
-        })
+        return Response(
+            {
+                "user": UserSerializer(
+                    user, context=self.get_serializer_context()
+                ).data,
+                "token": token[1],
+            }
+        )
 
 
-#Create API View for Login
+# Create API View for Login
 class LoginAPI(generics.GenericAPIView):
     serializer_class = LoginUserSerializer
 
     def post(self, request, *args, **kwargs):
         username = request.data.get("username")
         password = request.data.get("password")
-        #print(username, password)
+        # print(username, password)
         user = authenticate(request, username=username, password=password)
-        #print(user)
+        # print(user)
         if user:
             token = AuthToken.objects.create(user)
-            return Response({
-                "user": UserSerializer(user).data,
-                "token": token[1]
-            })
+            return Response({"user": UserSerializer(user).data, "token": token[1]})
         else:
-            return Response({
-                "message":"Invalid credentials."
-            })
+            return Response({"message": "Invalid credentials."})
+
 
 # Get User API
 class UserAPI(generics.RetrieveAPIView):
-    permission_classes = [permissions.IsAuthenticated, ]
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
     serializer_class = UserSerializer
 
     def get_object(self):
@@ -54,7 +66,25 @@ class UserAPI(generics.RetrieveAPIView):
 class LogoutAPI(generics.RetrieveAPIView):
     def post(self, request, *args, **kwargs):
         res = AuthToken.objects.filter(user=request.user).delete()
-        return Response({
-            "message":"Logged out successfully."
-        })
+        return Response({"message": "Logged out successfully."})
 
+
+# Category, Product and Cart API View
+class CategoryAPI(generics.ListAPIView):
+    queryset = Category.objects.all().order_by("id")
+    serializer_class = CategorySerializer
+
+
+class ProductAPI(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class CartAPI(generics.ListAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+
+class OrdersAPI(generics.ListAPIView):
+    qs = Order.objects.all()
+    serializer_class = OrderSerializer
