@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %}
+
+<title>{% block pagetitle %}Products | Products{%endblock%}</title>
+{% block content %}
+
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Products</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}">Home</a></li>
+                <li class="breadcrumb-item active">Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <div class="d-flex justify-content-between">
+        <h3>Products</h3>
+        <a href="{% url 'products:change_product' %}"><button class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>
+                Add</button></a>
+    </div>
+
+    <div class="col-12">
+        <div class="card p-3">
+
+            <div class="row col-md-11 mx-auto">
+                <section class="col-md-6 mx-auto">
+                    <div class="card-shadow">
+                        <div class="d-flex justify-content-between">
+                            <h6>PRODUCTS</h6>
+                        </div>
+                        {% include 'products/blocks/forms/form_product.html' %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
