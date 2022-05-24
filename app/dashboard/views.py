@@ -7,13 +7,13 @@ from .form import MealForm
 
 
 # Create your views here.
+
 class IndexView(View):
     template_name = 'dashboard/index.html'
 
     def get(self, request):
         context = {}
         return render(request, self.template_name, context)
-
 
 class MealsView(View):
     template_name = 'dashboard/meal.html'
