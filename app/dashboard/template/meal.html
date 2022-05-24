@@ -4,81 +4,72 @@
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
-
   <ul class="sidebar-nav" id="sidebar-nav">
-
     <li class="nav-item">
-      <a class="nav-link " href="index.html">
+      <a class="nav-link" href="index.html">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
-    </li><!-- End Dashboard Nav -->
+    </li>
+    <!-- End Dashboard Nav -->
 
-
- 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{% url 'dashboard:meals'%}">
         <i class="bi bi-person"></i>
-        <span>Meal</span>
+        <span>Order</span>
       </a>
-    </li><!-- End Profile Page Nav -->
+    </li>
+    <!-- End Profile Page Nav -->
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="pages-faq.html">
         <i class="bi bi-question-circle"></i>
         <span>Categories</span>
       </a>
-    </li><!-- End Categories Nav -->
+    </li>
+    <!-- End Categories Nav -->
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="pages-contact.html">
         <i class="bi bi-envelope"></i>
         <span>Contact</span>
       </a>
-    </li><!-- End Contact Page Nav -->
-
+    </li>
+    <!-- End Contact Page Nav -->
   </ul>
-
-</aside><!-- End Sidebar-->
+</aside>
+<!-- End Sidebar-->
 <!-- End Sidebar-->
 
 <main id="main" class="main">
   <div class="col-12">
     <div class="card recent-sales overflow-auto">
       <div class="card-body">
-        <h5 class="card-title">Menu Items <span>| Today</span></h5>
+        <h5 class="card-title">Order Items <span>| Today</span></h5>
 
         <table class="table table-borderless datatable">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Order ID</th>
               <th scope="col">Customer</th>
-              <th scope="col">Meal Category</th>
+              <th scope="col">Order</th>
               <th scope="col">Price</th>
-              <th scope="col">
-                <a href="{% url 'dashboard:add-meals' %}"
-                  ><span class="btn btn-primary">Add meal</span></a
-                >
-              </th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Payment Method</th>
             </tr>
           </thead>
           <tbody>
             {% for meal in meals %}
             <tr>
               <th scope="row"><a href="#"></a></th>
+
               <td>{{meal.customer_name}}</td>
               <td>{{meal.meal_type}}</td>
+              <td>{{meal.created_at}}</td>
               <td>{{meal.meal_price}}</td>
-              <td>
-                <a href="{% url 'dashboard:update-meals' meal.id %}">
-                  <span class="badge bg-warning">Edit</span></a
-                >
-                <!-- <a href=""><span class="badge bg-danger">Delete</span></a> -->
-                <form action="{% url 'dashboard:delete_meal' %}" method="post" style="display: inline">
-                  {% csrf_token %}
-                  <input type="text" value="{{meal.id}}" name="meal_id" hidden />
-                  <button class="badge bg-danger" type="submit">Delete</button>
-              </td>
+              <td>{{meal.meal_status}}</td>
+              <td>{{meal.payment_mode}}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -95,7 +86,6 @@
     &copy; Copyright <strong><span>Sumeal</span></strong
     >. All Rights Reserved
   </div>
- 
 </footer>
 <!-- End Footer -->
 

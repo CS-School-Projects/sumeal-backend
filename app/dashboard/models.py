@@ -13,9 +13,18 @@ class MealCategory(models.Model):
         return self.title
 
 class Meals(models.Model):
+    MEAL_CHOICES = [
+       ('CP', 'Complete'),
+       ('CC', 'Cancelled'),
+       ('DL', 'Delivered'),
+   ]
+
     customer_name = models.CharField(max_length=200, null=True, blank=True)
     meal_type = models.CharField(max_length = 300, null=True, blank=True)
     meal_price = models.FloatField(null=True, blank=True)
+    payment_mode = models.CharField(max_length =200, null=True, blank=True)
+    meal_status = models.CharField(max_length=200, choices=MEAL_CHOICES)
+    location = models.CharField(max_length=300, null=True, blank=True)
     meal_category = models.ForeignKey(MealCategory, on_delete=models.CASCADE, null=True, blank=True)
     id = models.UUIDField(
          primary_key = True,
@@ -25,4 +34,6 @@ class Meals(models.Model):
     
     def __str__(self):
         return self.meal_type
+
+
     

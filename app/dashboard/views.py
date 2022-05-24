@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from .models import Meals, MealCategory
 from .form import MealForm
-# authentication of users is
 
 # Create your views here.
 
@@ -14,16 +13,12 @@ class IndexView(View):
         context = {}
         return render(request, self.template_name, context)
 
-
 class MealsView(View):
     template_name = 'meal.html'
     def get(self, request):
         meals = Meals.objects.all()
         context = {'meals':meals}
         return render(request, self.template_name, context)
-
-
-
 
 
 class AddMealView(View):
