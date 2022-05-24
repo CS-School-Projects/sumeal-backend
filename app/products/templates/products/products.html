@@ -15,7 +15,8 @@
 
     <div class="d-flex justify-content-between">
         <h3>Products</h3>
-        <a href="{% url 'products:change_product' %}"><button class="btn btn-primary btn-sm"><i class="bi bi-plus"></i> Add</button></a>
+        <a href="{% url 'products:change_product' %}"><button class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>
+                Add</button></a>
     </div>
 
     <div class="col-12">
@@ -52,12 +53,14 @@
                             {{product.category.name}}
                         </td>
                         <td class="d-flex">
-                            <a href="{% url 'products:change_product' %}?product_id={{product.id}}" class="btn btn-outline-info btn-sm tex text-info mx-2"><i
-                                    class="bi bi-pencil"></i> Edit</a>
-                            <form action="" method="POST" class="requires-confirmation"
+                            <a href="{% url 'products:change_product' %}?product_id={{product.id}}"
+                                class="btn btn-outline-info btn-sm tex text-info mx-2"><i class="bi bi-pencil"></i>
+                                Edit</a>
+                            <form action="{% url 'products:delete_product' %}" method="POST"
+                                class="requires-confirmation"
                                 data-message="Click on okay to permanently delete this record.">
                                 {% csrf_token %}
-                                <input type="hidden" name="product_id" value="{{type.id}}">
+                                <input type="hidden" name="product_id" value="{{product.id}}">
                                 <button type="submit" class="btn btn-danger btn-sm">delete</button>
                             </form>
                         </td>
