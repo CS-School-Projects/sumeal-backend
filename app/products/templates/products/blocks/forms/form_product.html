@@ -1,0 +1,58 @@
+<form action="{% url 'products:change_product' %}" class="needs-validation my-4" method="POST"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{product.id}}">
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <label for="name">Name</label>
+            <input class="form-control" placeholder="Local Foods" value="{{product.name}}" type="text" name="name"
+                id="name" required>
+            <div class="invalid-feedback">
+                Please this field is required.
+            </div>
+        </div>
+        <div class="col-md-12 form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" rows="3"
+                class="form-control">{{product.description}}</textarea>
+            <div class="invalid-feedback">
+                Please this field is required.
+            </div>
+        </div>
+
+        <div class="col-md-12 form-group">
+            <label for="price">Price</label>
+            <input class="form-control" placeholder="Price" value="{{product.price}}" type="text" name="price"
+                id="price" required>
+            <div class="invalid-feedback">
+                Please this field is required.
+            </div>
+        </div>
+
+        <div class="col-md-12 form-group">
+            <label for="price">Image</label>
+
+            <input class="form-control" type="file" name="image" id="image"
+                {% if not product and product.image %}required{% endif %}>
+            <div class="invalid-feedback">
+                Please this field is required.
+            </div>
+        </div>
+
+        <div class="col-md-12 form-group">
+            <label for="category">Category</label>
+            <select name="category" id="category">
+                <option value="">Select Category</option>
+                {% for category in categories %}
+                <option value="{{category.id}}" {% if product.category.id == category.id %}selected{% endif %}>{{category.name}}</option>
+                {% endfor %}
+            </select>
+            <div class="invalid-feedback">
+                Please this field is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-group my-3">
+        <button type="submit" class="btn btn-primary py-2 px-4">Submit</button>
+    </div>
+</form>
