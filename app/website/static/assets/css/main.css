@@ -7,6 +7,10 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body,
 div,
@@ -89,6 +93,7 @@ mark,
 audio,
 video {
     margin: 0;
+    /* scroll-behavior: smooth; */
     padding: 0;
     border: 0;
     font-size: 100%;
@@ -1548,7 +1553,7 @@ input[type="submit"].style1,
 input[type="reset"].style1,
 button.style1,
 .button.style1 {
-    background: #c10000 url("images/overlay.png");
+    background: #000000 url("images/overlay.png");
     color: #fff;
 }
 
@@ -1557,7 +1562,7 @@ input[type="submit"].style1:hover,
 input[type="reset"].style1:hover,
 button.style1:hover,
 .button.style1:hover {
-    background-color: #f98780;
+    background-color: #1f1f1f;
 }
 
 input[type="button"].style1:active,
@@ -1565,7 +1570,7 @@ input[type="submit"].style1:active,
 input[type="reset"].style1:active,
 button.style1:active,
 .button.style1:active {
-    background-color: #c10000;
+    background-color: #000000;
 }
 
 input[type="button"].style2,
@@ -1599,7 +1604,7 @@ input[type="submit"].style3,
 input[type="reset"].style3,
 button.style3,
 .button.style3 {
-    background: #c10000 url("images/overlay.png");
+    background: #000000 url("images/overlay.png");
     color: #fff;
 }
 
@@ -1608,7 +1613,7 @@ input[type="submit"].style3:hover,
 input[type="reset"].style3:hover,
 button.style3:hover,
 .button.style3:hover {
-    background-color: #c10000;
+    background-color: #000000;
 }
 
 input[type="button"].style3:active,
@@ -2168,7 +2173,7 @@ ul.actions.special {
 }
 
 #highlights .highlight h3 {
-    color: #c10000;
+    color: #2a2871;
     margin: 0 0 0.75em 0;
     font-size: 1.15em;
     letter-spacing: 0.05em;

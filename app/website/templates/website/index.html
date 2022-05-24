@@ -23,11 +23,10 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li class="current"><a href="/">Home</a></li>
-
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <li class="current"><a href="#intro">Home</a></li>
+                    <li><a href="#main">Categories</a></li>
+                    <li><a href="#highlights">About us</a></li>
+                    <li><a href="#footer">Contact us</a></li>
                 </ul>
             </nav>
         </section>
@@ -40,17 +39,20 @@
                     So in case you were wondering what this is all about ...
                 </p>
                 <p class="style2">
-                    Sumeal helps consumers to easily place an order when they are stuck in traffic or on the way to pick
-                    up the kids. Mobile apps provide the freedom to order from any place at any time without pausing
-                    everything and making a call to the restaurant.
+                    Sumeal helps consumers to easily place an order when they are stuck in traffic or on the way to pick up the kids. Mobile apps provide the freedom to order from any place at any time without pausing everything and making a call to the restaurant.
                 </p>
-                <!-- <p class="style3">
-            Sumeal helps consumers to easily place an order when they are stuck in traffic or
-             on the way to pick up the kids. Mobile apps provide the freedom to order from any 
-             place at any time without pausing everything and making a call to the restaurant.
-          </p> -->
+
                 <ul class="actions">
-                    <li><a href="#" class="button style3 large">Install App</a></li>
+                    <li>
+                        <a href="#" class="image featured">
+                            <img src="{% static 'images/apple.png' %}" alt="App store" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="image featured">
+                            <img src="{% static 'images/play.png' %}" alt="Google play" />
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -59,16 +61,10 @@
         <section id="main" class="wrapper style2">
             <div class="title">Categories</div>
             <div class="container">
-                <!-- Image -->
-                <a href="#" class="image featured">
-                    <img src="{% static 'images/pic01.jpg' %}" alt="background image" />
-                </a>
-
                 <!-- Features -->
                 <section id="features">
                     <header class="style1">
                         <h2>There are various categories to order your meals from</h2>
-                        <!-- <p>Feugiat dolor nullam orci pretium phasellus justo</p> -->
                     </header>
                     <div class="feature-list">
                         <div class="row">
@@ -78,8 +74,7 @@
                                         Meat and Fish
                                     </h3>
                                     <p>
-                                        Our meat and fish recipes come from different parts of the country.They range
-                                        from local to continental dishes to boost your appetite
+                                        Our meat and fish recipes come from different parts of the country.They range from local to continental dishes to boost your appetite
                                     </p>
                                 </section>
                             </div>
@@ -89,8 +84,7 @@
                                         BurgerKing
                                     </h3>
                                     <p>
-                                        Enjoy our delicious varieties of burgers such as hamburgers,cheese burgers and
-                                        crispy chicken among others
+                                        Enjoy our delicious varieties of burgers such as hamburgers,cheese burgers and crispy chicken among others
                                     </p>
                                 </section>
                             </div>
@@ -100,8 +94,7 @@
                                         Dessert
                                     </h3>
                                     <p>
-                                        Our desserts vary based on the consumers taste.We have ice cream,milkshake,fruit
-                                        punch and many more
+                                        Our desserts vary based on the consumers taste.We have ice cream,milkshake,fruit punch and many more
                                     </p>
                                 </section>
                             </div>
@@ -111,17 +104,13 @@
                                         Pizza
                                     </h3>
                                     <p>
-                                        Everyone likes pizza.Purchase different types of pizza from us with various
-                                        toppings and you won't regret it.
+                                        Everyone likes pizza.Purchase different types of pizza from us with various toppings and you won't regret it.
                                     </p>
                                 </section>
                             </div>
                         </div>
                     </div>
-                    <ul class="actions special">
-                        <li><a href="#" class="button style1 large">Get Started</a></li>
-                        <li><a href="#" class="button style2 large">More Info</a></li>
-                    </ul>
+
                 </section>
             </div>
         </section>
@@ -134,10 +123,9 @@
                     <div class="col-4 col-12-medium">
                         <section class="highlight">
                             <a href="#" class="image featured"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
-                            <h3><a href="#">Food Deliver</a></h3>
+                            <h3><a href="#">Food Delivery</a></h3>
                             <p>
-                                Order any of our foods and we ensure your order arrives safely to you with the help of
-                                our tracking system
+                                Order any of our foods and we ensure your order arrives safely to you with the help of our tracking system
                             </p>
                             <ul class="actions">
                                 <li><a href="#" class="button style1">Learn More</a></li>
@@ -149,8 +137,7 @@
                             <a href="#" class="image featured"><img src="{% static 'images/pic03.jpg' %}" alt="" /></a>
                             <h3><a href="#">Hygiene</a></h3>
                             <p>
-                                Foods are always prepared in hygienic conditions hence the food is always in its best
-                                condition
+                                Foods are always prepared in hygienic conditions hence the food is always in its best condition
                             </p>
                             <ul class="actions">
                                 <li><a href="#" class="button style1">Learn More</a></li>
@@ -162,8 +149,7 @@
                             <a href="#" class="image featured"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
                             <h3><a href="#">Varieties of dishes</a></h3>
                             <p>
-                                Our dishes are always the best and have many varieties too which also give you the
-                                chance to explore our dishes.
+                                Our dishes are always the best and have many varieties too which also give you the chance to explore our dishes.
                             </p>
                             <ul class="actions">
                                 <li><a href="#" class="button style1">Learn More</a></li>
@@ -178,12 +164,7 @@
         <section id="footer" class="wrapper">
             <div class="title">Contact us</div>
             <div class="container">
-                <!-- <header class="style1">
-                    <h2>Ipsum sapien elementum portitor?</h2>
-                    <p>
-                        Sed turpis tortor, tincidunt sed ornare in metus porttitor mollis nunc in aliquet.<br /> Nam pharetra laoreet imperdiet volutpat etiam feugiat.
-                    </p>
-                </header> -->
+
                 <div class="row">
                     <div class="col-6 col-12-medium">
                         <!-- Contact Form -->
@@ -197,8 +178,7 @@
                                         <input type="text" name="email" id="contact-email" placeholder="Email" />
                                     </div>
                                     <div class="col-12">
-                                        <textarea name="message" id="contact-message"
-                                            placeholder=" Give a feedback or send a complain" rows="4"></textarea>
+                                        <textarea name="message" id="contact-message" placeholder=" Give a feedback or send a complain" rows="4"></textarea>
                                     </div>
                                     <div class="col-12">
                                         <ul class="actions">
@@ -220,19 +200,18 @@
                             <div class="row">
                                 <div class="col-6 col-12-small">
                                     <section>
-                                        <h3 class="lead icon solid fa-home">Mailing Address</h3>
+                                        <h3 class="lead icon solid fa-home"> Address</h3>
                                         <p>
-                                            Untitled Corp<br /> 1234 Somewhere Rd<br /> Nashville, TN 00000
-                                        </p>
+                                            University of Ghana<br /> Department of Computer Science<br /> Legon-Accra
                                     </section>
                                 </div>
                                 <div class="col-6 col-12-small">
                                     <section>
                                         <h3 class="lead icon solid fa-comment">Social</h3>
                                         <p>
-                                            <a href="#">@untitled-corp</a><br />
-                                            <a href="#">linkedin.com/untitled</a><br />
-                                            <a href="#">facebook.com/untitled</a>
+                                            <a href="#">twitter.com/sumeal</a><br />
+                                            <a href="#">linkedin.com/sumeal</a><br />
+                                            <a href="#">facebook.com/sumeal</a>
                                         </p>
                                     </section>
                                 </div>
@@ -240,14 +219,14 @@
                                     <section>
                                         <h3 class="lead icon solid fa-envelope">Email</h3>
                                         <p>
-                                            <a href="#">info@untitled.tld</a>
+                                            <a href="#">info@sumeal.com</a>
                                         </p>
                                     </section>
                                 </div>
                                 <div class="col-6 col-12-small">
                                     <section>
                                         <h3 class="lead icon solid fa-phone">Phone</h3>
-                                        <p>(000) 555-0000</p>
+                                        <p>+233 56-034-9981</p>
                                     </section>
                                 </div>
                             </div>
@@ -256,8 +235,9 @@
                 </div>
                 <div id="copyright">
                     <ul>
-                        <li>&copy; Untitled.</li>
-                        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        <li>&copy; Sumeal.</li>
+                        <li>Sumeal: Restaurant and food delivery app</a>
+                        </li>
                     </ul>
                 </div>
             </div>
