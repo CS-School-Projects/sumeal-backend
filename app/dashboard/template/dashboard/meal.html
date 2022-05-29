@@ -16,15 +16,23 @@
     <li class="nav-item">
       <a class="nav-link collapsed" href="{% url 'dashboard:meals'%}">
         <i class="bi bi-person"></i>
-        <span>Order</span>
+        <span>Orders</span>
       </a>
     </li>
     <!-- End Profile Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-faq.html">
+      <a class="nav-link collapsed" href="">
         <i class="bi bi-question-circle"></i>
         <span>Categories</span>
+      </a>
+    </li>
+    <!-- End Categories Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{% url 'products:products' %}">
+        <i class="bi bi-question-circle"></i>
+        <span>Products</span>
       </a>
     </li>
     <!-- End Categories Nav -->
@@ -38,7 +46,6 @@
     <!-- End Contact Page Nav -->
   </ul>
 </aside>
-<!-- End Sidebar-->
 <!-- End Sidebar-->
 
 <main id="main" class="main">
@@ -62,13 +69,21 @@
           <tbody>
             {% for meal in meals %}
             <tr>
-              <th scope="row"><a href="#"></a></th>
+              <th scope="row">{{forloop.counter}}</th>
 
               <td>{{meal.customer_name}}</td>
               <td>{{meal.meal_type}}</td>
-              <td>{{meal.created_at}}</td>
+              <td>{{meal.created_at|date:'Y-m-d'}}</td>
               <td>{{meal.meal_price}}</td>
-              <td>{{meal.meal_status}}</td>
+              <!-- <td>{{meal.meal_status}}</td> -->
+              <td>
+                <select name="" id="">
+                  <option value="Status">Status</option>
+                  <option value="Accept">Accept</option>
+                  <option value="Reject">Reject</option>
+                  <option value="Cancel">Cancel</option>
+                </select>
+              </td>
               <td>{{meal.payment_mode}}</td>
             </tr>
             {% endfor %}
