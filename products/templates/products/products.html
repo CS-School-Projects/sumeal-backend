@@ -1,0 +1,85 @@
+{% extends 'dashboard/base.html' %}
+{%load static%}
+{% block content %}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Products</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}">Home</a></li>
+                <li class="breadcrumb-item active">Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <div class="d-flex justify-content-between">
+        <h3>Products</h3>
+        <a href="{% url 'products:change_product' %}"><button class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>
+                Add</button></a>
+    </div>
+
+    <div class="col-12">
+        <div class="card p-3">
+            <p class="text">List of available products</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <td>Image</td>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Category</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if products %}
+                    {% for product in products %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>
+                            <img src="{% if product.image %}{{product.image.url}}{% endif %}" alt="{{product.name}}"
+                                height="50">
+                        </td>
+                        <td>
+                            hidfadf
+                            {{product.name}}
+                        </td>
+                        <td>
+                            {{product.price}}
+                        </td>
+                        <td>
+                            {{product.category.name}}
+                        </td>
+                        <td class="d-flex">
+                            <a href="{% url 'products:change_product' %}?product_id={{product.id}}"
+                                class="btn btn-outline-info btn-sm tex text-info mx-2"><i class="bi bi-pencil"></i>
+                                Edit</a>
+                            <form action="{% url 'products:delete_product' %}" method="POST"
+                                class="requires-confirmation"
+                                data-message="Click on okay to permanently delete this record.">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{product.id}}">
+                                <button type="submit" class="btn btn-danger btn-sm">delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                    {% else %}
+                    <tr>
+                        <td colspan="5">
+                            <p class="text text-center text-warning">No products available.</p>
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+</main><!-- End #main -->
+{%endblock%}
