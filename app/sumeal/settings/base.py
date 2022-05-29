@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "knox",
     "dashboard",
-    "website",
     "rest_api",
     "products",
+    "web",
 ]
 
 AUTH_USER_MODEL = "accounts.User"
@@ -139,7 +139,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "web/static/")]
 
 MEDIA_URL = "/assets/"
 MEDIA_ROOT = BASE_DIR / "assets"
