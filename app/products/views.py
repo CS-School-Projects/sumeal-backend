@@ -2,12 +2,14 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from products.models import Category
 from products.mxins import CreateUpdateMixin, DeletionMixin
-from products.forms import ProductForm
+from products.forms import ProductForm,CategoryFormReal
 from products.models import Product
 from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils.html import strip_tags
+from django.http import HttpResponseRedirect 
+
 
 
 class ProductsView(View):
@@ -60,3 +62,19 @@ class ChangeProductView(CreateUpdateMixin):
 class DeleteProductView(DeletionMixin):
     object_id_field = "product_id"
     model_class = Product
+
+
+def CategoryView(request):
+    submitted = False
+    if request.method == "POST":
+        form = CategoryFormReal(request.POST)
+        if form.is_valid():
+            form.save()   
+            messages.success(request,"Category Added Successfully")
+            return HttpResponseRedirect(request.path_info)
+    else:
+
+        form = CategoryFormReal()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request,'products/category.html',{'form':form , 'submitted':submitted})
