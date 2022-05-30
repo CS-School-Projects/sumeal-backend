@@ -4,10 +4,16 @@
 
   <!-- form section -->
   <main id="main" class="main">
-
-    <div class="pagetitle">
+    <div class="container">
+      <div class="pagetitle">
       <h1>Add Categories</h1>
     </div><!-- End Page Title -->
+
+    {%for message in messages%}
+    <div class="alert alert-success" role="alert">
+          {{message}}
+    </div>
+    {%endfor%}
 
     <section class="section dashboard">
       <div class="row">
@@ -23,5 +29,7 @@
 
 </div>
 </section>
+    </div>
+    
 </main>
   {%endblock%}

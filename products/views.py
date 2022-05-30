@@ -1,6 +1,5 @@
 from dataclasses import field
 from django.views import View
-from pdb import post_mortem
 from pyexpat import model
 from statistics import mode
 from tkinter.tix import Tree
@@ -10,13 +9,14 @@ from django.contrib.auth.decorators import login_required
 from requests import post
 from products.models import Category
 from products.mxins import CreateUpdateMixin, DeletionMixin
-from products.forms import ProductForm,CategoryForm
+from products.forms import ProductForm,CategoryFormReal
 from products.models import Product
 from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils.html import strip_tags
-from .forms import CategoryForm
+from .forms import CategoryFormReal
+from django.contrib import messages
 
 
 class ProductsView(View):
@@ -73,13 +73,14 @@ class DeleteProductView(DeletionMixin):
 def CategoryView(request):
     submitted = False
     if request.method == "POST":
-        form = CategoryForm(request.POST)
+        form = CategoryFormReal(request.POST)
         if form.is_valid():
             form.save()   
+            messages.success(request,"Category Added Successfully")
             return HttpResponseRedirect(request.path_info)
     else:
 
-        form = CategoryForm
+        form = CategoryFormReal()
         if 'submitted' in request.GET:
             submitted = True
     return render(request,'products/category.html',{'form':form , 'submitted':submitted})

@@ -5,17 +5,17 @@ from django import forms
 from products.models import Category, Product
 from django.forms import ModelForm
 
-class CategoryForm(ModelForm):
-    class Meta:
-        model = Category
-        fields = ('name','description')
-        CategoryName = forms.CharField()
-        Description = forms.CharField(widget=forms.Textarea,)
-        exclude = [
-            "id",
-            "created_at",
-            "updated_at",
-        ]
+# class CategoryForm(ModelForm):
+#     class Meta:
+#         model = Category
+#         fields = ('name','description')
+#         CategoryName = forms.CharField()
+#         Description = forms.CharField(widget=forms.Textarea)
+#         exclude = [
+#             "id",
+#             "created_at",
+#             "updated_at",
+#         ]
 
 
 class ProductForm(forms.ModelForm):
@@ -27,6 +27,17 @@ class ProductForm(forms.ModelForm):
             "updated_at",
         ]
 
-# class CategoryFormReal(forms.Form):
-#     CategoryName = forms.CharField()
-#     Description = forms.CharField(widget=forms.Textarea)
+class CategoryFormReal(forms.ModelForm):
+       name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder":"Category Name"}))
+       description = forms.CharField(widget=forms.Textarea(attrs={
+        'rows' : 4,
+        'class' : 'form-control',
+        }))
+       class Meta:
+          model = Category
+          fields = ['name','description']
+       exclude = [
+            "id",
+            "created_at",
+            "updated_at",
+             ]
