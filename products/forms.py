@@ -9,10 +9,8 @@ class CategoryForm(ModelForm):
     class Meta:
         model = Category
         fields = ('name','description')
-        widgets = {
-        'CategoryName' : forms.TextInput(attrs={'class':'form-control','placeholder':'Input Category Name'}),
-        'Description' : forms.Textarea(attrs={'class':'form-control'})
-        }
+        CategoryName = forms.CharField()
+        Description = forms.CharField(widget=forms.Textarea,)
         exclude = [
             "id",
             "created_at",
