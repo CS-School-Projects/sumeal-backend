@@ -1,0 +1,35 @@
+{% extends 'dashboard/base.html' %}
+{%load static%}
+{% block content %}
+
+  <!-- form section -->
+  <main id="main" class="main">
+    <div class="container">
+      <div class="pagetitle">
+      <h1>Add Categories</h1>
+    </div><!-- End Page Title -->
+
+    {%for message in messages%}
+    <div class="alert alert-success" role="alert">
+          {{message}}
+    </div>
+    {%endfor%}
+
+    <section class="section dashboard">
+      <div class="row">
+     <div class="form-group">
+       
+ <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+    {{form.as_p}}      
+      
+    <button type="submit" class="btn btn-lg btn-primary">Save</button>  
+   </form>
+
+</div>
+</section>
+    </div>
+    
+</main>
+  {%endblock%}
