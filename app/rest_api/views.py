@@ -16,6 +16,7 @@ from .serializers import (
 
 User = get_user_model()
 
+
 # Create  API View for register
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = CreateUserSerializer
@@ -25,14 +26,12 @@ class RegisterAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         token = AuthToken.objects.create(user)
-        return Response(
-            {
-                "user": UserSerializer(
-                    user, context=self.get_serializer_context()
-                ).data,
-                "token": token[1],
-            }
-        )
+        return Response({
+            "user":
+            UserSerializer(user, context=self.get_serializer_context()).data,
+            "token":
+            token[1],
+        })
 
 
 # Create API View for Login
@@ -47,7 +46,10 @@ class LoginAPI(generics.GenericAPIView):
         # print(user)
         if user:
             token = AuthToken.objects.create(user)
-            return Response({"user": UserSerializer(user).data, "token": token[1]})
+            return Response({
+                "user": UserSerializer(user).data,
+                "token": token[1]
+            })
         else:
             return Response({"message": "Invalid credentials."})
 
@@ -69,15 +71,22 @@ class LogoutAPI(generics.RetrieveAPIView):
         return Response({"message": "Logged out successfully."})
 
 
-# Category, Product and Cart API View
-class CategoryAPI(generics.ListAPIView):
-    queryset = Category.objects.all().order_by("id")
+class CategoryAPI(generics.GenericAPIView):
     serializer_class = CategorySerializer
 
+    def get(self, *args, **kwargs):
+        categories = Category.objects.all().order_by("id")
+        return Response(
+            {"categories": self.serializer_class(categories, many=True).data})
 
-class ProductAPI(generics.ListAPIView):
-    queryset = Product.objects.all()
+
+class ProductAPI(generics.GenericAPIView):
     serializer_class = ProductSerializer
+
+    def get(self, *args, **kwargs):
+        products = Product.objects.all()
+        return Response(
+            {"products": self.serializer_class(products, many=True).data})
 
 
 class CartAPI(generics.ListAPIView):
