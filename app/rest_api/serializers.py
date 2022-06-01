@@ -21,9 +21,8 @@ class CreateUserSerializer(serializers.ModelSerializer):
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
-        user = User.objects.create_user(
-            validated_data["username"], None, validated_data["password"]
-        )
+        user = User.objects.create_user(validated_data["username"], None,
+                                        validated_data["password"])
         return user
 
 
@@ -41,10 +40,12 @@ class LoginUserSerializer(serializers.Serializer):
 
 # Serializers for Products,Category and Cart
 class ProductSerializer(serializers.ModelSerializer):
-    # Get the image url by serializing the 'ImageField'
-    image = serializers.ImageField(
-        max_length=None, use_url=True, allow_null=True, required=False
-    )
+    image = serializers.SerializerMethodField('get_image_url')
+
+    def get_image_url(self, banner):
+        request = self.context.get("request")
+        url = banner.image.url
+        return request.build_absolute_uri(url)
 
     class Meta:
         model = Product

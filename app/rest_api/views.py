@@ -83,10 +83,16 @@ class CategoryAPI(generics.GenericAPIView):
 class ProductAPI(generics.GenericAPIView):
     serializer_class = ProductSerializer
 
-    def get(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         products = Product.objects.all()
-        return Response(
-            {"products": self.serializer_class(products, many=True).data})
+        return Response({
+            "products":
+            self.serializer_class(products,
+                                  context={
+                                      "request": request
+                                  },
+                                  many=True).data
+        })
 
 
 class CartAPI(generics.ListAPIView):
